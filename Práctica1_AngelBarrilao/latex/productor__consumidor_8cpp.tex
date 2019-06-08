@@ -1,0 +1,165 @@
+\hypertarget{productor__consumidor_8cpp}{}\section{productor\+\_\+consumidor.\+cpp File Reference}
+\label{productor__consumidor_8cpp}\index{productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}}
+
+
+Simula la produccion y consumicion sincronizada de datos en un buffer.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$semaphore.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+Include dependency graph for productor\+\_\+consumidor.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{productor__consumidor_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ int $>$ {\bfseries buffer} (tam\+\_\+vector)\hypertarget{productor__consumidor_8cpp_a964e7e09b4b6895d628d696eacb59586}{}\label{productor__consumidor_8cpp_a964e7e09b4b6895d628d696eacb59586}
+
+\item 
+void \hyperlink{productor__consumidor_8cpp_a77acc9846657a4b03ecfcea2a4ce1040}{retraso\+\_\+aleatorio} (const float smin, const float smax)
+\begin{DoxyCompactList}\small\item\em introduce un retraso aleatorio de duración comprendida entre \textquotesingle{}smin\textquotesingle{} y \textquotesingle{}smax\textquotesingle{} (dados en segundos) \end{DoxyCompactList}\item 
+unsigned \hyperlink{productor__consumidor_8cpp_a4c8153f26984dcad96b65a31c0888a53}{producir\+\_\+dato} ()
+\begin{DoxyCompactList}\small\item\em Función que simula la producción de un dato. \end{DoxyCompactList}\item 
+void \hyperlink{productor__consumidor_8cpp_ad4a4be632dec3a2b3a0ae99b2bc278e4}{consumir\+\_\+dato} (int dato)
+\begin{DoxyCompactList}\small\item\em Función que simula la consumicion de un dato. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{productor__consumidor_8cpp_acac6e9cb1cf8e642adf05f75d12e8d07}{funcion\+\_\+productor} (void $\ast$)
+\begin{DoxyCompactList}\small\item\em Función que ejecuta la hebra del productor. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{productor__consumidor_8cpp_af24194dc7d3d27155cd9803cbc4186c1}{funcion\+\_\+consumidor} (void $\ast$)
+\begin{DoxyCompactList}\small\item\em Función que ejecuta la hebra del consumidor. \end{DoxyCompactList}\item 
+int {\bfseries main} ()\hypertarget{productor__consumidor_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{productor__consumidor_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned \hyperlink{productor__consumidor_8cpp_a973b122746d5543e92200f47639b0181}{num\+\_\+items} = 40\hypertarget{productor__consumidor_8cpp_a973b122746d5543e92200f47639b0181}{}\label{productor__consumidor_8cpp_a973b122746d5543e92200f47639b0181}
+
+\begin{DoxyCompactList}\small\item\em Declaramos las variables tipo $<$const unsigned$>$=\char`\"{}\char`\"{}$>$ para num\+\_\+items y tam\+\_\+vector. Declaramos los semaforos , un buffer de tipo $<$vector$>$ y una varible de tipo $<$int$>$ para la ocupacion del buffer. \end{DoxyCompactList}\item 
+const unsigned {\bfseries tam\+\_\+vector} = 10\hypertarget{productor__consumidor_8cpp_abfd2cdfb8b14ae607f76cae4cbd0f32d}{}\label{productor__consumidor_8cpp_abfd2cdfb8b14ae607f76cae4cbd0f32d}
+
+\item 
+sem\+\_\+t {\bfseries producir}\hypertarget{productor__consumidor_8cpp_a6d1cdf6834984f21984c27cfc3ae0593}{}\label{productor__consumidor_8cpp_a6d1cdf6834984f21984c27cfc3ae0593}
+
+\item 
+sem\+\_\+t {\bfseries consumir}\hypertarget{productor__consumidor_8cpp_a7caf70564028f5de02be1161e9e108ea}{}\label{productor__consumidor_8cpp_a7caf70564028f5de02be1161e9e108ea}
+
+\item 
+sem\+\_\+t {\bfseries mutex}\hypertarget{productor__consumidor_8cpp_a69dc6cbabd0ff91786e988284cd51c39}{}\label{productor__consumidor_8cpp_a69dc6cbabd0ff91786e988284cd51c39}
+
+\item 
+int {\bfseries ocupacion} =0\hypertarget{productor__consumidor_8cpp_ae0decea53915c967f1d213f3fe075b6b}{}\label{productor__consumidor_8cpp_ae0decea53915c967f1d213f3fe075b6b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simula la produccion y consumicion sincronizada de datos en un buffer. 
+
+\begin{DoxyAuthor}{Author}
+Angel Barrilao 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}!consumir\+\_\+dato@{consumir\+\_\+dato}}
+\index{consumir\+\_\+dato@{consumir\+\_\+dato}!productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}}
+\subsubsection[{\texorpdfstring{consumir\+\_\+dato(int dato)}{consumir_dato(int dato)}}]{\setlength{\rightskip}{0pt plus 5cm}void consumir\+\_\+dato (
+\begin{DoxyParamCaption}
+\item[{int}]{dato}
+\end{DoxyParamCaption}
+)}\hypertarget{productor__consumidor_8cpp_ad4a4be632dec3a2b3a0ae99b2bc278e4}{}\label{productor__consumidor_8cpp_ad4a4be632dec3a2b3a0ae99b2bc278e4}
+
+
+Función que simula la consumicion de un dato. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & Paramero de entrada que se mostrara en pantalla \\
+\hline
+\end{DoxyParams}
+\index{productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}!funcion\+\_\+consumidor@{funcion\+\_\+consumidor}}
+\index{funcion\+\_\+consumidor@{funcion\+\_\+consumidor}!productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}}
+\subsubsection[{\texorpdfstring{funcion\+\_\+consumidor(void $\ast$)}{funcion_consumidor(void *)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ funcion\+\_\+consumidor (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{productor__consumidor_8cpp_af24194dc7d3d27155cd9803cbc4186c1}{}\label{productor__consumidor_8cpp_af24194dc7d3d27155cd9803cbc4186c1}
+
+
+Función que ejecuta la hebra del consumidor. 
+
+\begin{DoxyReturn}{Returns}
+N\+U\+LL 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & tipo void \\
+\hline
+\end{DoxyParams}
+\index{productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}!funcion\+\_\+productor@{funcion\+\_\+productor}}
+\index{funcion\+\_\+productor@{funcion\+\_\+productor}!productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}}
+\subsubsection[{\texorpdfstring{funcion\+\_\+productor(void $\ast$)}{funcion_productor(void *)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ funcion\+\_\+productor (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{productor__consumidor_8cpp_acac6e9cb1cf8e642adf05f75d12e8d07}{}\label{productor__consumidor_8cpp_acac6e9cb1cf8e642adf05f75d12e8d07}
+
+
+Función que ejecuta la hebra del productor. 
+
+\begin{DoxyReturn}{Returns}
+N\+U\+LL 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & tipo void \\
+\hline
+\end{DoxyParams}
+\index{productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}!producir\+\_\+dato@{producir\+\_\+dato}}
+\index{producir\+\_\+dato@{producir\+\_\+dato}!productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}}
+\subsubsection[{\texorpdfstring{producir\+\_\+dato()}{producir_dato()}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned producir\+\_\+dato (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{productor__consumidor_8cpp_a4c8153f26984dcad96b65a31c0888a53}{}\label{productor__consumidor_8cpp_a4c8153f26984dcad96b65a31c0888a53}
+
+
+Función que simula la producción de un dato. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve una cifra 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em unsigned} & \\
+\hline
+\end{DoxyRetVals}
+\index{productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}!retraso\+\_\+aleatorio@{retraso\+\_\+aleatorio}}
+\index{retraso\+\_\+aleatorio@{retraso\+\_\+aleatorio}!productor\+\_\+consumidor.\+cpp@{productor\+\_\+consumidor.\+cpp}}
+\subsubsection[{\texorpdfstring{retraso\+\_\+aleatorio(const float smin, const float smax)}{retraso_aleatorio(const float smin, const float smax)}}]{\setlength{\rightskip}{0pt plus 5cm}void retraso\+\_\+aleatorio (
+\begin{DoxyParamCaption}
+\item[{const float}]{smin, }
+\item[{const float}]{smax}
+\end{DoxyParamCaption}
+)}\hypertarget{productor__consumidor_8cpp_a77acc9846657a4b03ecfcea2a4ce1040}{}\label{productor__consumidor_8cpp_a77acc9846657a4b03ecfcea2a4ce1040}
+
+
+introduce un retraso aleatorio de duración comprendida entre \textquotesingle{}smin\textquotesingle{} y \textquotesingle{}smax\textquotesingle{} (dados en segundos) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em smin} & minimo de segundos \\
+\hline
+{\em smax} & maximo de segundos \\
+\hline
+\end{DoxyParams}

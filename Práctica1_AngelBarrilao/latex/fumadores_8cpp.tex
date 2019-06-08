@@ -1,0 +1,126 @@
+\hypertarget{fumadores_8cpp}{}\section{fumadores.\+cpp File Reference}
+\label{fumadores_8cpp}\index{fumadores.\+cpp@{fumadores.\+cpp}}
+
+
+Simula a un estanquero y sus fumadores.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$semaphore.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+Include dependency graph for fumadores.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fumadores_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fumadores_8cpp_a77acc9846657a4b03ecfcea2a4ce1040}{retraso\+\_\+aleatorio} (const float smin, const float smax)
+\begin{DoxyCompactList}\small\item\em introduce un retraso aleatorio de duración comprendida entre \textquotesingle{}smin\textquotesingle{} y \textquotesingle{}smax\textquotesingle{} (dados en segundos) \end{DoxyCompactList}\item 
+void \hyperlink{fumadores_8cpp_aae7f7f70c42d51e3633a7fd8131d5654}{fumar} (int num\+\_\+fum)
+\begin{DoxyCompactList}\small\item\em Función que simula la accion de fumar. Mostrara por pantalla el fumador que esta fumando. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{fumadores_8cpp_a4cb283a6b00c04d6024c8778816665ff}{funcion\+\_\+estanquero} (void $\ast$)
+\begin{DoxyCompactList}\small\item\em Función que ejecuta la hebra del estanquero. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{fumadores_8cpp_ad354d1e6fb952c6892327b6077eeb235}{funcion\+\_\+fumador} (void $\ast$num\+\_\+fum\+\_\+void)
+\begin{DoxyCompactList}\small\item\em Función que ejecuta la hebra del fumador. \end{DoxyCompactList}\item 
+int {\bfseries main} ()\hypertarget{fumadores_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{fumadores_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sem\+\_\+t \hyperlink{fumadores_8cpp_a297407bf441f68b65a7f88bb36341cb0}{fumadores} \mbox{[}3\mbox{]}\hypertarget{fumadores_8cpp_a297407bf441f68b65a7f88bb36341cb0}{}\label{fumadores_8cpp_a297407bf441f68b65a7f88bb36341cb0}
+
+\begin{DoxyCompactList}\small\item\em Declaramos los semaforos tipo $<$sem\+\_\+t$>$ para cada uno de los actores del problema. \end{DoxyCompactList}\item 
+sem\+\_\+t {\bfseries estanquero}\hypertarget{fumadores_8cpp_ae12c884620a9ee83c89b98d8253dcaf9}{}\label{fumadores_8cpp_ae12c884620a9ee83c89b98d8253dcaf9}
+
+\item 
+sem\+\_\+t {\bfseries mutex}\hypertarget{fumadores_8cpp_a69dc6cbabd0ff91786e988284cd51c39}{}\label{fumadores_8cpp_a69dc6cbabd0ff91786e988284cd51c39}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simula a un estanquero y sus fumadores. 
+
+\begin{DoxyAuthor}{Author}
+Angel Barrilao 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{fumadores.\+cpp@{fumadores.\+cpp}!fumar@{fumar}}
+\index{fumar@{fumar}!fumadores.\+cpp@{fumadores.\+cpp}}
+\subsubsection[{\texorpdfstring{fumar(int num\+\_\+fum)}{fumar(int num_fum)}}]{\setlength{\rightskip}{0pt plus 5cm}void fumar (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+fum}
+\end{DoxyParamCaption}
+)}\hypertarget{fumadores_8cpp_aae7f7f70c42d51e3633a7fd8131d5654}{}\label{fumadores_8cpp_aae7f7f70c42d51e3633a7fd8131d5654}
+
+
+Función que simula la accion de fumar. Mostrara por pantalla el fumador que esta fumando. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Recibe} & el id de un fumador como entero \\
+\hline
+\end{DoxyParams}
+\index{fumadores.\+cpp@{fumadores.\+cpp}!funcion\+\_\+estanquero@{funcion\+\_\+estanquero}}
+\index{funcion\+\_\+estanquero@{funcion\+\_\+estanquero}!fumadores.\+cpp@{fumadores.\+cpp}}
+\subsubsection[{\texorpdfstring{funcion\+\_\+estanquero(void $\ast$)}{funcion_estanquero(void *)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ funcion\+\_\+estanquero (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{fumadores_8cpp_a4cb283a6b00c04d6024c8778816665ff}{}\label{fumadores_8cpp_a4cb283a6b00c04d6024c8778816665ff}
+
+
+Función que ejecuta la hebra del estanquero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & tipo void \\
+\hline
+\end{DoxyParams}
+\index{fumadores.\+cpp@{fumadores.\+cpp}!funcion\+\_\+fumador@{funcion\+\_\+fumador}}
+\index{funcion\+\_\+fumador@{funcion\+\_\+fumador}!fumadores.\+cpp@{fumadores.\+cpp}}
+\subsubsection[{\texorpdfstring{funcion\+\_\+fumador(void $\ast$num\+\_\+fum\+\_\+void)}{funcion_fumador(void *num_fum_void)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ funcion\+\_\+fumador (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{num\+\_\+fum\+\_\+void}
+\end{DoxyParamCaption}
+)}\hypertarget{fumadores_8cpp_ad354d1e6fb952c6892327b6077eeb235}{}\label{fumadores_8cpp_ad354d1e6fb952c6892327b6077eeb235}
+
+
+Función que ejecuta la hebra del fumador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & tipo void, indica el ID del fumador \\
+\hline
+\end{DoxyParams}
+\index{fumadores.\+cpp@{fumadores.\+cpp}!retraso\+\_\+aleatorio@{retraso\+\_\+aleatorio}}
+\index{retraso\+\_\+aleatorio@{retraso\+\_\+aleatorio}!fumadores.\+cpp@{fumadores.\+cpp}}
+\subsubsection[{\texorpdfstring{retraso\+\_\+aleatorio(const float smin, const float smax)}{retraso_aleatorio(const float smin, const float smax)}}]{\setlength{\rightskip}{0pt plus 5cm}void retraso\+\_\+aleatorio (
+\begin{DoxyParamCaption}
+\item[{const float}]{smin, }
+\item[{const float}]{smax}
+\end{DoxyParamCaption}
+)}\hypertarget{fumadores_8cpp_a77acc9846657a4b03ecfcea2a4ce1040}{}\label{fumadores_8cpp_a77acc9846657a4b03ecfcea2a4ce1040}
+
+
+introduce un retraso aleatorio de duración comprendida entre \textquotesingle{}smin\textquotesingle{} y \textquotesingle{}smax\textquotesingle{} (dados en segundos) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em smin} & minimo de segundos \\
+\hline
+{\em smax} & maximo de segundos \\
+\hline
+\end{DoxyParams}
